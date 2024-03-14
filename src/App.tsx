@@ -8,9 +8,9 @@ function App() {
         <GridItem area= "nav"  >
           <NavBar />
         </GridItem>
-        <GridItem area={"main"} backgroundColor={'red'} height={"100px"} ></GridItem>
+        <GridItem area={"main"}  height={"100px"} ></GridItem>
         <Show above='lg'>
-          <GridItem area={"aside"} backgroundColor={'green'} height={"100px"} ></GridItem>
+          <GridItem area={"aside"} height={"100px"} ></GridItem>
         </Show>
       </Grid>
       {/* <SimpleGrid columns={}></SimpleGrid> */}
