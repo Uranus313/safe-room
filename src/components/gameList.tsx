@@ -2,14 +2,17 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import GameCard from "./gameCard";
 import useDataList from "../hooks/useDataList";
 import GameCardSkeleton from "./gameCardSkeleton";
+import { GameQuery } from "../App";
 interface Game{
     id: number;
     name: string;
     background_image: string;
   }
-
-function gameList(){
-  let {dataList,error,isLoading} = useDataList<Game>("/games")
+interface Props{
+  gameQuery : GameQuery;
+}
+function gameList(props : Props){
+  let {dataList,error,isLoading} = useDataList<Game>("/games",{params:{ genres: props.gameQuery.genre?.id}},[props.gameQuery])
   let Skeletons = [1,2,3,4,5,6,7,8,9]
   return(
     <>

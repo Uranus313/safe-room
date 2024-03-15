@@ -1,14 +1,16 @@
-import { HStack, Heading, Image,  List,  Spinner,  Text } from "@chakra-ui/react";
+import { HStack, Heading, Image,  Link,  List,  Spinner,  Text } from "@chakra-ui/react";
 import useDataList from "../hooks/useDataList";
 import getCroppedImage from "../functions/getCroppedImage";
 // import GameCardSkeleton from "./gameCardSkeleton";
-interface Genre{
+export interface Genre{
     id: number;
     name: string;
     image_background: string;
   }
-
-function GenreList(){
+interface Props{
+  setSelectedGenre : (genre : Genre) => void;
+}
+function GenreList(props : Props){
   let {dataList,error,isLoading} = useDataList<Genre>("/genres")
   return(
     <>
@@ -19,9 +21,9 @@ function GenreList(){
         
         {dataList.map(genre => 
           <li key={genre.id}>
-            <HStack paddingY={1}>
+            <HStack paddingY={1} onClick={() => props.setSelectedGenre(genre)}>
               <Image src= {getCroppedImage(genre.image_background)} boxSize={30} borderRadius={10}></Image>
-              <Text>{genre.name}</Text>
+              <Link>{genre.name}</Link>
             </HStack>
             
           </li>
