@@ -12,6 +12,7 @@ function useDataList<T>(endpoint : string, requestConfig? : AxiosRequestConfig, 
   let [error,setError] = useState();
   let [isLoading,setLoading] = useState(true)
   useEffect(() => {
+    setLoading(true);
     gameAPIClient.get<FetchedData<T>>(endpoint,{ signal: controller.signal, ...requestConfig }).
     then( res => {setDataList(res.data.results); setLoading(false)}).
     catch(err => {if (err instanceof CanceledError) return;
