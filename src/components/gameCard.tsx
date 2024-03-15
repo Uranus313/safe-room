@@ -1,4 +1,4 @@
-import { Card, CardBody, CardFooter, CardHeader, Heading, Image } from "@chakra-ui/react";
+import { Card, CardBody, Heading, Image } from "@chakra-ui/react";
 import getCroppedImage from "../functions/getCroppedImage";
 
 interface Props{

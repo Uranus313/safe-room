@@ -9,12 +9,13 @@ function useDataList<T>(endpoint : string){
   let controller = new AbortController()
   let [dataList,setDataList] = useState<T[]>([]);
   let [error,setError] = useState();
+  let [isLoading,setLoading] = useState(true)
   useEffect(() => {
     gameAPIClient.get<FetchedData<T>>(endpoint).
-    then( res => setDataList(res.data.results)).
+    then( res => {setDataList(res.data.results); setLoading(false)}).
     catch(err => setError(err.message));
     return () => controller.abort();
   },[])
-  return {dataList,error}
+  return {dataList,error,isLoading}
 }
 export default useDataList
