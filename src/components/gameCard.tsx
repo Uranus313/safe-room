@@ -8,12 +8,11 @@ interface Props{
 function GameCard(props : Props){
     return(
         <Card >
-          <Image  src={getCroppedImage(props.imgUrl)}></Image>
+          <Image  src={getCroppedImage(props.imgUrl)} borderRadius={6}></Image>
           <CardBody>
             <Heading size={"lg"}>
               {props.gameName}
             </Heading>
-            
           </CardBody>
         </Card>
     )

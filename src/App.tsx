@@ -1,6 +1,7 @@
 import { Button,  Grid, GridItem, Show, Text } from '@chakra-ui/react'
 import NavBar from './components/navbar';
 import GameList from './components/gameList';
+import GenreList from './components/genreList';
 
 
 
@@ -18,12 +19,10 @@ function App() {
         </GridItem>
         <Show above='lg'>
           <GridItem area={"aside"} height={"100px"} >
-            <Text>Aside</Text>
+            <GenreList/>
           </GridItem>
         </Show>
       </Grid>
-      {/* <SimpleGrid columns={}></SimpleGrid> */}
-      <Button colorScheme='blue'>Button</Button>
     </>
   );
 }
