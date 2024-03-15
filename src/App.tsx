@@ -17,7 +17,9 @@ function App() {
           <GameList />
         </GridItem>
         <Show above='lg'>
-          <GridItem area={"aside"} height={"100px"} ></GridItem>
+          <GridItem area={"aside"} height={"100px"} >
+            <Text>Aside</Text>
+          </GridItem>
         </Show>
       </Grid>
       {/* <SimpleGrid columns={}></SimpleGrid> */}
