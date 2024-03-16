@@ -1,11 +1,13 @@
 import { Grid, GridItem, Show } from '@chakra-ui/react'
 import NavBar from './components/navbar';
-import GameList from './components/gameList';
+import GameList, { Platform } from './components/gameList';
 import GenreList, { Genre } from './components/genreList';
 import { useState } from 'react';
+import PlatformMenu from './components/platformMenu';
 
 export interface GameQuery{
   genre: Genre | null;
+  platform: Platform | null;
 }
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
           <NavBar />
         </GridItem>
         <GridItem area={"main"}  height={"100px"} >
+          <PlatformMenu selectedPlatform={gameQuery.platform} setSelectedPlatform={(platform) => setGameQuery({...gameQuery,platform})}/>
           <GameList gameQuery={gameQuery} />
         </GridItem>
         <Show above='lg'>
