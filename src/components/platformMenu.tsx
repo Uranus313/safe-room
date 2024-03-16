@@ -10,7 +10,7 @@ interface Props{
   selectedPlatform : Platform | null;
 }
 function PlatformMenu(props : Props){
-  let {dataList,error,isLoading} = useDataList<Platform>("/platforms")
+  let {dataList} = useDataList<Platform>("/platforms")
   return(
     <>
       <Menu>

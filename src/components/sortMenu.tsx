@@ -1,7 +1,5 @@
-import {   Button, Menu,  MenuButton,  MenuItem,  MenuList,  Text } from "@chakra-ui/react";
-import useDataList from "../hooks/useDataList";
-// import getCroppedImage from "../functions/getCroppedImage";
-import { Platform } from "./gameList";
+import {   Button, Menu,  MenuButton,  MenuItem,  MenuList} from "@chakra-ui/react";
+
 import { BsChevronDown } from "react-icons/bs";
 // import GameCardSkeleton from "./gameCardSkeleton";
 
