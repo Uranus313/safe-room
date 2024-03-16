@@ -4,10 +4,12 @@ import GameList, { Platform } from './components/gameList';
 import GenreList, { Genre } from './components/genreList';
 import { useState } from 'react';
 import PlatformMenu from './components/platformMenu';
+import SortMenu from './components/sortMenu';
 
 export interface GameQuery{
   genre: Genre | null;
   platform: Platform | null;
+  order: string;
 }
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
         </GridItem>
         <GridItem area={"main"}  height={"100px"} >
           <PlatformMenu selectedPlatform={gameQuery.platform} setSelectedPlatform={(platform) => setGameQuery({...gameQuery,platform})}/>
+          <SortMenu selectedOrdering={gameQuery.order} setSelectedOrdering={(order) => setGameQuery({...gameQuery,order})}/>
           <GameList gameQuery={gameQuery} />
         </GridItem>
         <Show above='lg'>
