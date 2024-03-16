@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://{Uranus313}.github.io/{safe-room}",
+  "homepage": "http://Uranus313.github.io/safe-room",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
