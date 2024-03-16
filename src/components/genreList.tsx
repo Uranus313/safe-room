@@ -8,7 +8,8 @@ export interface Genre{
     image_background: string;
   }
 interface Props{
-  setSelectedGenre : (genre : Genre) => void;
+  setSelectedGenre : (genre : Genre | null) => void;
+  selectedGenre : Genre | null;
 }
 function GenreList(props : Props){
   let {dataList,error,isLoading} = useDataList<Genre>("/genres")
@@ -21,9 +22,9 @@ function GenreList(props : Props){
         
         {dataList.map(genre => 
           <li key={genre.id}>
-            <HStack paddingY={1} onClick={() => props.setSelectedGenre(genre)}>
+            <HStack paddingY={1} onClick={genre === props.selectedGenre ? () => props.setSelectedGenre(null) : () => props.setSelectedGenre(genre)}>
               <Image src= {getCroppedImage(genre.image_background)} boxSize={30} borderRadius={10}></Image>
-              <Link>{genre.name}</Link>
+              <Link textColor={ genre === props.selectedGenre ? "blue": ""} textDecor={genre === props.selectedGenre ? "underline": ""}>{genre.name}</Link>
             </HStack>
             
           </li>

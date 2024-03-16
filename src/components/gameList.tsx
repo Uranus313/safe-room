@@ -20,7 +20,7 @@ interface Props{
 }
 function gameList(props : Props){
   let {dataList,error,isLoading} = useDataList<Game>("/games",{params:{ genres: props.gameQuery.genre?.id,
-  platforms : props.gameQuery.platform?.id, ordering: props.gameQuery.order}},[props.gameQuery])
+  platforms : props.gameQuery.platform?.id, ordering: props.gameQuery.order, search: props.gameQuery.search}},[props.gameQuery])
   let Skeletons = [1,2,3,4,5,6,7,8,9]
   return(
     <>

@@ -22,7 +22,7 @@ function SortMenu(props : Props){
     <>
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-            Order by  {currentOrdering?.label ? <Text>{currentOrdering.label}</Text> : <Text>Relevance</Text>}
+            Order by {currentOrdering?.label ? currentOrdering.label : "Relevance"}
         </MenuButton>
         <MenuList>
           {sortOrders.map(order => <MenuItem key={order.value} onClick={() => props.setSelectedOrdering(order.value)}>{order.label}</MenuItem>)}

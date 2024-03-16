@@ -6,7 +6,7 @@ import { BsChevronDown } from "react-icons/bs";
 // import GameCardSkeleton from "./gameCardSkeleton";
 
 interface Props{
-  setSelectedPlatform : (platform : Platform) => void;
+  setSelectedPlatform : (platform : Platform | null) => void;
   selectedPlatform : Platform | null;
 }
 function PlatformMenu(props : Props){
@@ -18,6 +18,7 @@ function PlatformMenu(props : Props){
           {props.selectedPlatform ? <Text>{props.selectedPlatform.name}</Text> : <Text>Platforms</Text>}
         </MenuButton>
         <MenuList>
+        <MenuItem onClick={() => props.setSelectedPlatform(null)}>{"all platforms"}</MenuItem>
           {dataList.map(platform => <MenuItem key={platform.id} onClick={() => props.setSelectedPlatform(platform)}>{platform.name}</MenuItem>)}
         </MenuList>
       </Menu>
