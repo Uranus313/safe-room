@@ -5,6 +5,7 @@ import GenreList, { Genre } from './components/genreList';
 import { useState } from 'react';
 import PlatformMenu from './components/platformMenu';
 import SortMenu from './components/sortMenu';
+import GenreMenu from './components/genreMenu';
 
 export interface GameQuery{
   genre: Genre | null;
@@ -27,10 +28,14 @@ function App() {
           <HStack marginBottom={3}>
             <PlatformMenu selectedPlatform={gameQuery.platform} setSelectedPlatform={(platform) => setGameQuery({...gameQuery,platform})}/>
             <SortMenu selectedOrdering={gameQuery.order} setSelectedOrdering={(order) => setGameQuery({...gameQuery,order})}/>
+            
           </HStack>
+          <Show below='lg'>
+            <GenreMenu selectedGenre={gameQuery.genre} setSelectedGenre={(genre) => setGameQuery({...gameQuery,genre})} />
+          </Show>
           <GameList gameQuery={gameQuery} />
         </GridItem>
-        <Show above='lg'>
+        <Show above='lg' >
           <GridItem area={"aside"} height={"100px"} paddingLeft={5}>
             <GenreList selectedGenre={gameQuery.genre} setSelectedGenre={(genre) => setGameQuery({...gameQuery,genre})} />
           </GridItem>
