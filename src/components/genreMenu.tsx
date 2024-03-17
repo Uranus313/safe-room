@@ -1,4 +1,4 @@
-import { Button, HStack, Heading, Image,  Link,  List,  Menu,  MenuButton,  MenuItem,  MenuList,  Spinner,  Text } from "@chakra-ui/react";
+import { Button, HStack,Image,  Menu,  MenuButton,  MenuItem,  MenuList,  Text } from "@chakra-ui/react";
 import useDataList from "../hooks/useDataList";
 import getCroppedImage from "../functions/getCroppedImage";
 import { BsChevronDown } from "react-icons/bs";
@@ -13,7 +13,7 @@ interface Props{
   selectedGenre : Genre | null;
 }
 function GenreMenu(props : Props){
-  let {dataList,error,isLoading} = useDataList<Genre>("/genres")
+  let {dataList} = useDataList<Genre>("/genres")
   return(
     <>
       {/* {error && <Text>{error}</Text>}
