@@ -26,8 +26,8 @@ function GenreMenu(props : Props){
         <MenuList>
           <MenuItem onClick={() => props.setSelectedGenre(null)}>All genre</MenuItem>
           {dataList.map(genre => 
-            <MenuItem key={genre.id}>
-              <HStack paddingY={1} onClick={ () => props.setSelectedGenre(genre)}>
+            <MenuItem key={genre.id} onClick={ () => props.setSelectedGenre(genre)}>
+              <HStack paddingY={1} >
                 <Image src= {getCroppedImage(genre.image_background)} boxSize={30} borderRadius={10}></Image>
                 <Text>{genre.name}</Text>
               </HStack>
