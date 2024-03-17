@@ -24,7 +24,7 @@ function GenreMenu(props : Props){
           {props.selectedGenre ? <Text>{props.selectedGenre.name}</Text> : <Text>Genre</Text>}
         </MenuButton>
         <MenuList>
-          <MenuItem onClick={() => props.setSelectedGenre(null)}>All genre</MenuItem>
+          <MenuItem onClick={() => props.setSelectedGenre(null)}>All genres</MenuItem>
           {dataList.map(genre => 
             <MenuItem key={genre.id} onClick={ () => props.setSelectedGenre(genre)}>
               <HStack paddingY={1} >
