@@ -1,8 +1,9 @@
 import {   Button, Menu,  MenuButton,  MenuItem,  MenuList,  Text } from "@chakra-ui/react";
-import useDataList from "../hooks/useDataList";
+
 // import getCroppedImage from "../functions/getCroppedImage";
-import { Platform } from "./gameList";
+import { Platform } from "../hooks/useGame";
 import { BsChevronDown } from "react-icons/bs";
+import usePlatform from "../hooks/usePlatform";
 // import GameCardSkeleton from "./gameCardSkeleton";
 
 interface Props{
@@ -10,7 +11,7 @@ interface Props{
   selectedPlatform : Platform | null;
 }
 function PlatformMenu(props : Props){
-  let {dataList} = useDataList<Platform>("/platforms")
+  let {dataList} = usePlatform()
   return(
     <>
       <Menu>
