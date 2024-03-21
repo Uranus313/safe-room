@@ -18,7 +18,7 @@ const useGenre = () => {
     queryKey: ['genres'],
     queryFn : fetchGenres,
     staleTime : 20000,
-    initialData: { count : genres.length, results : genres }
+    initialData: { count : genres.length,next: null, results : genres }
   })
     // return useDataList<Genre>("/genres")
 }  

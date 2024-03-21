@@ -1,6 +1,7 @@
 import axios from "axios";
 export  interface FetchedData<T>{
     count : number;
+    next : string | null;
     results : T[];
   }
 export default axios.create({
