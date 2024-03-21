@@ -1,9 +1,9 @@
 import {   Button, Menu,  MenuButton,  MenuItem,  MenuList,  Text } from "@chakra-ui/react";
 
 // import getCroppedImage from "../functions/getCroppedImage";
-import { Platform } from "../hooks/useGame";
+
 import { BsChevronDown } from "react-icons/bs";
-import usePlatform from "../hooks/usePlatform";
+import usePlatform, { Platform } from "../hooks/usePlatform";
 // import GameCardSkeleton from "./gameCardSkeleton";
 
 interface Props{
@@ -11,7 +11,7 @@ interface Props{
   selectedPlatform : Platform | null;
 }
 function PlatformMenu(props : Props){
-  let {dataList} = usePlatform()
+  let {data : dataList} = usePlatform()
   return(
     <>
       <Menu>
@@ -20,7 +20,7 @@ function PlatformMenu(props : Props){
         </MenuButton>
         <MenuList>
         <MenuItem onClick={() => props.setSelectedPlatform(null)}>{"all platforms"}</MenuItem>
-          {dataList.map(platform => <MenuItem key={platform.id} onClick={() => props.setSelectedPlatform(platform)}>{platform.name}</MenuItem>)}
+          {dataList?.results.map(platform => <MenuItem key={platform.id} onClick={() => props.setSelectedPlatform(platform)}>{platform.name}</MenuItem>)}
         </MenuList>
       </Menu>
       

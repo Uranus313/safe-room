@@ -1,7 +1,8 @@
 import { Button, HStack,Image,  Menu,  MenuButton,  MenuItem,  MenuList,  Text } from "@chakra-ui/react";
-import useDataList from "../hooks/useDataList";
+
 import getCroppedImage from "../functions/getCroppedImage";
 import { BsChevronDown } from "react-icons/bs";
+import useGenre from "../hooks/useGenre";
 // import GameCardSkeleton from "./gameCardSkeleton";
 export interface Genre{
     id: number;
@@ -13,7 +14,7 @@ interface Props{
   selectedGenre : Genre | null;
 }
 function GenreMenu(props : Props){
-  let {dataList} = useDataList<Genre>("/genres")
+  let {data : dataList} = useGenre();
   return(
     <>
       {/* {error && <Text>{error}</Text>}
@@ -25,7 +26,7 @@ function GenreMenu(props : Props){
         </MenuButton>
         <MenuList>
           <MenuItem onClick={() => props.setSelectedGenre(null)}>All genres</MenuItem>
-          {dataList.map(genre => 
+          {dataList.results.map(genre => 
             <MenuItem key={genre.id} onClick={ () => props.setSelectedGenre(genre)}>
               <HStack paddingY={1} >
                 <Image src= {getCroppedImage(genre.image_background)} boxSize={30} borderRadius={10}></Image>
