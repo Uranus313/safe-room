@@ -4,6 +4,7 @@ import {   Button, Menu,  MenuButton,  MenuItem,  MenuList,  Text } from "@chakr
 
 import { BsChevronDown } from "react-icons/bs";
 import usePlatform from "../hooks/usePlatform";
+import useFindPlatform from "../hooks/useFindPlatform";
 // import GameCardSkeleton from "./gameCardSkeleton";
 
 interface Props{
@@ -12,7 +13,7 @@ interface Props{
 }
 function PlatformMenu(props : Props){
   let {data : dataList} = usePlatform();
-  let currentPlatform = dataList.results.find(platform => platform.id === props.selectedPlatformID) || null ;
+  let currentPlatform = useFindPlatform(props.selectedPlatformID);
   return(
     <>
       <Menu>

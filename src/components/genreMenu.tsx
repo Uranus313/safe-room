@@ -3,6 +3,7 @@ import { Button, HStack,Image,  Menu,  MenuButton,  MenuItem,  MenuList,  Text }
 import getCroppedImage from "../functions/getCroppedImage";
 import { BsChevronDown } from "react-icons/bs";
 import useGenre from "../hooks/useGenre";
+import useFindGenre from "../hooks/useFindGenre";
 // import GameCardSkeleton from "./gameCardSkeleton";
 
   interface Props{
@@ -11,7 +12,7 @@ import useGenre from "../hooks/useGenre";
   }
 function GenreMenu(props : Props){
   let {data : dataList} = useGenre();
-  let currentGenre = dataList.results.find(genre => genre.id === props.selectedGenreID) || null ;
+  let currentGenre = useFindGenre(props.selectedGenreID);
   return(
     <>
       {/* {error && <Text>{error}</Text>}
