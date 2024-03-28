@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 // import axios from "axios";
 import gameAPIClient, { FetchedData } from "../connections/gameAPIClient";
-
+import ms from "ms";
 import { genres } from "../data/genres";
 export interface Genre{
     id: number;
@@ -17,7 +17,7 @@ const useGenre = () => {
   return useQuery<FetchedData<Genre>,Error>({
     queryKey: ['genres'],
     queryFn : fetchGenres,
-    staleTime : 20000,
+    staleTime : ms("24h"),
     initialData: { count : genres.length,next: null, results : genres }
   })
     // return useDataList<Genre>("/genres")

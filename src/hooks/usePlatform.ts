@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import gameAPIClient, { FetchedData } from "../connections/gameAPIClient";
-
+import ms from "ms";
 import { platforms } from "../data/platforms";
 export interface Platform{
     id: number;
@@ -16,7 +16,7 @@ const usePlatform = () => {
     return useQuery<FetchedData<Platform>,Error>({
       queryKey: ['platforms'],
       queryFn : fetchPlatform,
-      staleTime : 200000,
+      staleTime : ms("1h"),
       initialData: { count : platforms.length,next: null, results : platforms }
     })
   }  
