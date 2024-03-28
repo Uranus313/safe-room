@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Heading, Show } from '@chakra-ui/react'
+import { Grid, GridItem, HStack, Show } from '@chakra-ui/react'
 import NavBar from './components/navbar';
 import GameList from './components/gameList';
 import GenreList from './components/genreList';
@@ -6,12 +6,11 @@ import { useState } from 'react';
 import PlatformMenu from './components/platformMenu';
 import SortMenu from './components/sortMenu';
 import GenreMenu from './components/genreMenu';
-import { Genre } from './hooks/useGenre';
-import { Platform } from './hooks/usePlatform';
+import GameListHeading from './components/gameListHeading';
 
 export interface GameQuery{
-  genre: Genre | null;
-  platform: Platform | null;
+  genre_id: number | null;
+  platform_id: number | null;
   order: string;
   search : string;
 }
@@ -26,20 +25,20 @@ function App() {
           <NavBar setSelectedSearch={(search) => {setGameQuery({...gameQuery,search});}}/>
         </GridItem>
         <GridItem area={"main"}  height={"100px"} paddingLeft={2}>
-          <Heading marginBottom={3}>{gameQuery.genre && gameQuery.genre.name} Games</Heading>
+          <GameListHeading genre_id={gameQuery.genre_id} platform_id={gameQuery.platform_id} />
           <HStack marginBottom={3}>
-            <PlatformMenu selectedPlatform={gameQuery.platform} setSelectedPlatform={(platform) => setGameQuery({...gameQuery,platform})}/>
+            <PlatformMenu selectedPlatformID={gameQuery.platform_id} setSelectedPlatform={(platform_id) => setGameQuery({...gameQuery,platform_id})}/>
             <SortMenu selectedOrdering={gameQuery.order} setSelectedOrdering={(order) => setGameQuery({...gameQuery,order})}/>
             
           </HStack>
           <Show below='lg'>
-            <GenreMenu selectedGenre={gameQuery.genre} setSelectedGenre={(genre) => setGameQuery({...gameQuery,genre})} />
+            <GenreMenu selectedGenreID={gameQuery.genre_id} setSelectedGenre={(genre_id) => setGameQuery({...gameQuery,genre_id})} />
           </Show>
           <GameList gameQuery={gameQuery} />
         </GridItem>
         <Show above='lg' >
           <GridItem area={"aside"} height={"100px"} paddingLeft={5}>
-            <GenreList selectedGenre={gameQuery.genre} setSelectedGenre={(genre) => setGameQuery({...gameQuery,genre})} />
+            <GenreList selectedGenreID={gameQuery.genre_id} setSelectedGenre={(genre_id) => setGameQuery({...gameQuery,genre_id})} />
           </GridItem>
         </Show>
       </Grid>

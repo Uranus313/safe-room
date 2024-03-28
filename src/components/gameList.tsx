@@ -31,7 +31,7 @@ function gameList(props: Props) {
         dataLength={totalFetchedGames} //This is important field to render the next data
         next={() => fetchNextPage()}
         hasMore={hasNextPage}
-        loader={<Spinner />}
+        loader={<Spinner marginY={5}/>}
         endMessage={
           <p style={{ textAlign: "center" }}>
             <b>Yay! You have seen it all</b>

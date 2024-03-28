@@ -3,24 +3,25 @@ import {   Button, Menu,  MenuButton,  MenuItem,  MenuList,  Text } from "@chakr
 // import getCroppedImage from "../functions/getCroppedImage";
 
 import { BsChevronDown } from "react-icons/bs";
-import usePlatform, { Platform } from "../hooks/usePlatform";
+import usePlatform from "../hooks/usePlatform";
 // import GameCardSkeleton from "./gameCardSkeleton";
 
 interface Props{
-  setSelectedPlatform : (platform : Platform | null) => void;
-  selectedPlatform : Platform | null;
+  setSelectedPlatform : (platform : number | null) => void;
+  selectedPlatformID : number | null;
 }
 function PlatformMenu(props : Props){
-  let {data : dataList} = usePlatform()
+  let {data : dataList} = usePlatform();
+  let currentPlatform = dataList.results.find(platform => platform.id === props.selectedPlatformID) || null ;
   return(
     <>
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-          {props.selectedPlatform ? <Text>{props.selectedPlatform.name}</Text> : <Text>Platforms</Text>}
+          {currentPlatform ? <Text>{currentPlatform.name}</Text> : <Text>Platforms</Text>}
         </MenuButton>
         <MenuList>
         <MenuItem onClick={() => props.setSelectedPlatform(null)}>{"all platforms"}</MenuItem>
-          {dataList?.results.map(platform => <MenuItem key={platform.id} onClick={() => props.setSelectedPlatform(platform)}>{platform.name}</MenuItem>)}
+          {dataList?.results.map(platform => <MenuItem key={platform.id} onClick={() => props.setSelectedPlatform(platform.id)}>{platform.name}</MenuItem>)}
         </MenuList>
       </Menu>
       

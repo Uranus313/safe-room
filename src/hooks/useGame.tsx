@@ -19,8 +19,8 @@ const useGame = (gameQuery : GameQuery) =>{
     queryKey: ['games',gameQuery],
     initialPageParam: 1,
     queryFn : ({pageParam = 1}) => gameAPIClient
-    .get<FetchedData<Game>>('/games',{params:{ genres: gameQuery.genre?.id,
-      platforms : gameQuery.platform?.id, 
+    .get<FetchedData<Game>>('/games',{params:{ genres: gameQuery.genre_id,
+      platforms : gameQuery.platform_id, 
       ordering: gameQuery.order, 
       search: gameQuery.search,
       page : pageParam}})
