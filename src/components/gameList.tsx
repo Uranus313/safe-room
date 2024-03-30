@@ -19,6 +19,7 @@ function gameList() {
     fetchNextPage,
     hasNextPage,
   } = useGame();
+
   let Skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const totalFetchedGames =
     dataList?.pages.reduce((total, page) => total + page.results.length, 0) ||
@@ -41,18 +42,23 @@ function gameList() {
         <SimpleGrid
           columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
           spacing={6}
+          paddingTop={3}
           paddingRight={2}
+          paddingLeft={2}
         >
           {isLoading &&
             Skeletons.map((Skeleton) => <GameCardSkeleton key={Skeleton} />)}
           {dataList?.pages.map((page, index) => (
             <React.Fragment key={index}>
+              
               {page.results.map((game) => (
+                
                 <GameCard
                   key={game.id}
                   gameName={game.name}
                   metacritic={game.metacritic}
                   imgUrl={game.background_image}
+                  slug={game.slug}
                   platforms={game.parent_platforms?.map((p) => p.platform)}
                 />
               ))}

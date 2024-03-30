@@ -9,6 +9,7 @@ function GameListHeading(){
     const [genre_id, platform_id]= useGameQueryStore( s => [s.gameQuery.genre_id , s.gameQuery.platform_id]);
     let currentGenre = useFindGenre(genre_id);
     let currentPlatform = useFindPlatform(platform_id);
-    return <Heading marginBottom={3}>{currentGenre && currentGenre.name} {currentPlatform && currentPlatform.name} Games</Heading>
+    return <Heading marginBottom={3} paddingRight={2}
+    paddingLeft={2}>{currentGenre && currentGenre.name} {currentPlatform && currentPlatform.name} Games</Heading>
 }
 export default GameListHeading

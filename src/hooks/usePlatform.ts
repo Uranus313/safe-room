@@ -1,21 +1,23 @@
 
 
 import { useQuery } from "@tanstack/react-query";
-import gameAPIClient, { FetchedData } from "../connections/gameAPIClient";
+
 import ms from "ms";
 import { platforms } from "../data/platforms";
+import APIClient, { FetchResponse } from "../connections/gameAPIClient";
 export interface Platform{
     id: number;
     name : string;
     slug : string;
   }
 const usePlatform = () => {
-    const fetchPlatform = () => gameAPIClient
-    .get<FetchedData<Platform>>('/platforms')
-    .then(res => res.data);
-    return useQuery<FetchedData<Platform>,Error>({
+  const ApiClient = new APIClient<Platform>('/platforms');
+    // const fetchPlatform = () => gameAPIClient
+    // .get<FetchedData<Platform>>('/platforms')
+    // .then(res => res.data);
+    return useQuery<FetchResponse<Platform>,Error>({
       queryKey: ['platforms'],
-      queryFn : fetchPlatform,
+      queryFn : ApiClient.getAll,
       staleTime : ms("1h"),
       initialData: { count : platforms.length,next: null, results : platforms }
     })

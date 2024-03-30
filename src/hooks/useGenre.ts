@@ -1,9 +1,10 @@
 // import useDataList from "./useDataList";
 import { useQuery } from "@tanstack/react-query";
 // import axios from "axios";
-import gameAPIClient, { FetchedData } from "../connections/gameAPIClient";
+
 import ms from "ms";
 import { genres } from "../data/genres";
+import APIClient, { FetchResponse } from "../connections/gameAPIClient";
 export interface Genre{
     id: number;
     name: string;
@@ -11,12 +12,13 @@ export interface Genre{
   }
 
 const useGenre = () => {
-  const fetchGenres = () => gameAPIClient
-  .get<FetchedData<Genre>>('/genres')
-  .then(res => res.data);
-  return useQuery<FetchedData<Genre>,Error>({
+  const ApiClient = new APIClient<Genre>('/genres');
+  // const fetchGenres = () => gameAPIClient
+  // .get<FetchedData<Genre>>('/genres')
+  // .then(res => res.data);
+  return useQuery<FetchResponse<Genre>,Error>({
     queryKey: ['genres'],
-    queryFn : fetchGenres,
+    queryFn :  ApiClient.getAll,
     staleTime : ms("24h"),
     initialData: { count : genres.length,next: null, results : genres }
   })

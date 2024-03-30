@@ -17,9 +17,11 @@ function App() {
     <>
       <Grid templateAreas={{ base: ` "main" `, lg: `  "aside main" ` }}
       templateColumns={{base : "1fr", lg : "250px 1fr" }}>
-        <GridItem area={"main"}  height={"100px"} paddingLeft={2}>
+        <GridItem area={"main"}  height={"100px"} paddingLeft={2} 
+          >
           <GameListHeading  />
-          <HStack marginBottom={3}>
+          <HStack marginBottom={3} paddingRight={2}
+          paddingLeft={2}>
             <PlatformMenu />
             <SortMenu />
             
