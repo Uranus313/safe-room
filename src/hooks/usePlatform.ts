@@ -5,11 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import { platforms } from "../data/platforms";
 import APIClient, { FetchResponse } from "../connections/gameAPIClient";
-export interface Platform{
-    id: number;
-    name : string;
-    slug : string;
-  }
+import { Platform } from "../entities/entities";
+
 const usePlatform = () => {
   const ApiClient = new APIClient<Platform>('/platforms');
     // const fetchPlatform = () => gameAPIClient
