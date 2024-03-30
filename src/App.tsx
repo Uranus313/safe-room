@@ -11,14 +11,12 @@ import GameListHeading from './components/gameListHeading';
 
 
 function App() {
+  
   // let [gameQuery,setGameQuery] = useState<GameQuery>({} as GameQuery)
   return (
     <>
-      <Grid templateAreas={{ base: ` "nav" "main" `, lg: ` "nav nav" "aside main" ` }}
+      <Grid templateAreas={{ base: ` "main" `, lg: `  "aside main" ` }}
       templateColumns={{base : "1fr", lg : "250px 1fr" }}>
-        <GridItem area= "nav"  >
-          <NavBar />
-        </GridItem>
         <GridItem area={"main"}  height={"100px"} paddingLeft={2}>
           <GameListHeading  />
           <HStack marginBottom={3}>
