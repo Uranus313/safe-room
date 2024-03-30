@@ -3,19 +3,18 @@ import {    Input, InputGroup } from "@chakra-ui/react";
 // import getCroppedImage from "../functions/getCroppedImage";
 
 import { useRef } from "react";
+import useGameQueryStore from "../storage/gameQueryStore";
 // import GameCardSkeleton from "./gameCardSkeleton";
 
-interface Props{
-  setSelectedSearch : (search : string) => void;
-}
-function SearchInput(props : Props){
+
+function SearchInput(){
     let ref = useRef<HTMLInputElement>(null)
-    
+    const setSearchText = useGameQueryStore( s => s.setSearchText);
   return(
     <form style={{width:"100%"}} onSubmit={(event)=>{
         event.preventDefault();
         if (ref.current){
-            props.setSelectedSearch(ref.current.value)
+            setSearchText(ref.current.value)
             console.log(ref.current.value)
         }
     }}>

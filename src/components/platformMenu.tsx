@@ -5,15 +5,14 @@ import {   Button, Menu,  MenuButton,  MenuItem,  MenuList,  Text } from "@chakr
 import { BsChevronDown } from "react-icons/bs";
 import usePlatform from "../hooks/usePlatform";
 import useFindPlatform from "../hooks/useFindPlatform";
+import useGameQueryStore from "../storage/gameQueryStore";
 // import GameCardSkeleton from "./gameCardSkeleton";
 
-interface Props{
-  setSelectedPlatform : (platform : number | null) => void;
-  selectedPlatformID : number | null;
-}
-function PlatformMenu(props : Props){
+
+function PlatformMenu(){
   let {data : dataList} = usePlatform();
-  let currentPlatform = useFindPlatform(props.selectedPlatformID);
+  const [selectedPlatformID,setSelectedPlatform] = useGameQueryStore(s => [s.gameQuery.platform_id, s.setPlatformId]);
+  let currentPlatform = useFindPlatform(selectedPlatformID);
   return(
     <>
       <Menu>
@@ -21,8 +20,8 @@ function PlatformMenu(props : Props){
           {currentPlatform ? <Text>{currentPlatform.name}</Text> : <Text>Platforms</Text>}
         </MenuButton>
         <MenuList>
-        <MenuItem onClick={() => props.setSelectedPlatform(null)}>{"all platforms"}</MenuItem>
-          {dataList?.results.map(platform => <MenuItem key={platform.id} onClick={() => props.setSelectedPlatform(platform.id)}>{platform.name}</MenuItem>)}
+        <MenuItem onClick={() => setSelectedPlatform(null)}>{"all platforms"}</MenuItem>
+          {dataList?.results.map(platform => <MenuItem key={platform.id} onClick={() => setSelectedPlatform(platform.id)}>{platform.name}</MenuItem>)}
         </MenuList>
       </Menu>
       
