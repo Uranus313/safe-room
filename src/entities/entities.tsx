@@ -23,3 +23,13 @@ export interface Game{
     id: number;
     name: string;
   }
+  export interface Trailer{
+    id: number;
+    name: string;
+    preview: string;
+    data: TrailerLinkPack;
+  }
+  interface TrailerLinkPack{
+    480 : string;
+    max : string;
+  }
