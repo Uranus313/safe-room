@@ -12,7 +12,7 @@ function SearchInput(){
     let ref = useRef<HTMLInputElement>(null)
     const navigate = useNavigate();
     const setSearchText = useGameQueryStore( s => s.setSearchText);
-    const searchText = useGameQueryStore( s => s.gameQuery.search);
+    // const searchText = useGameQueryStore( s => s.gameQuery.search);
   return(
     <form style={{width:"100%"}} onSubmit={(event)=>{
         event.preventDefault();
@@ -23,7 +23,7 @@ function SearchInput(){
         navigate("/");
     }}>
       <InputGroup>
-        <Input  borderRadius={"10px"} variant={"filled"} placeholder={"Search..."} ref={ref} value={searchText}></Input>
+        <Input  borderRadius={"10px"} variant={"filled"} placeholder={"Search..."} ref={ref} ></Input>
       </InputGroup>
     </form>  
   )

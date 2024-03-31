@@ -1,5 +1,6 @@
 import { Image, SimpleGrid, Spinner } from "@chakra-ui/react";
 import useGameScreenshots from "../hooks/useGameScreenshots";
+import getCroppedImage from "../functions/getCroppedImage";
 
 interface Props{
     slug: string;
@@ -12,7 +13,7 @@ function GameScreenshots({slug} : Props){
     if(error){ throw (error)}
     return (
         <SimpleGrid columns={{base: 1 , md:2}} spacing={4} marginY={4}>
-            {screenshots?.results.map(screenshot => <Image key={screenshot.id}  src={screenshot.image} />)}
+            {screenshots?.results.map(screenshot => <Image key={screenshot.id}  src={getCroppedImage(screenshot.image)} />)}
         </SimpleGrid>
     )
 }
