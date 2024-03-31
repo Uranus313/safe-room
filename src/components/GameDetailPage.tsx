@@ -7,6 +7,7 @@ import DefinitionItem from "./DefinitionItem";
 import GameAttributes from "./GameAttributes";
 import useGameTrailers from "../hooks/useGameTrailers";
 import GameTrailer from "./GameTrailer";
+import GameScreenshots from "./GameScreenshots";
 
 function GameDetailPage(){
     const {slug} = useParams();
@@ -22,6 +23,7 @@ function GameDetailPage(){
         <ExpandableText limit={300}>{game.description_raw}</ExpandableText>
         <GameAttributes game={game}/>
         <GameTrailer slug={slug!} />
+        <GameScreenshots slug= {slug!} />
         </>
     );
 } 

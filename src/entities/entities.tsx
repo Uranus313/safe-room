@@ -33,3 +33,7 @@ export interface Game{
     480 : string;
     max : string;
   }
+  export interface Screenshot{
+    id : number;
+    image : string;
+  }
