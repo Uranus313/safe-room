@@ -17,7 +17,7 @@ function GenreMenu(){
       {/* {error && <Text>{error}</Text>}
       <Heading marginBottom={3}>Genres</Heading>
       {isLoading && <Spinner></Spinner>} */}
-      <Menu>
+      <Menu >
         <MenuButton as={Button} rightIcon={<BsChevronDown />} marginBottom={3}>
           {currentGenre ? <Text>{currentGenre.name}</Text> : <Text>Genre</Text>}
         </MenuButton>

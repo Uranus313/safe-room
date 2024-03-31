@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Show } from '@chakra-ui/react'
+import { Box, Grid, GridItem, HStack, Show } from '@chakra-ui/react'
 
 import GameList from './components/gameList';
 import GenreList from './components/genreList';
@@ -28,7 +28,10 @@ function App() {
             
           </HStack>
           <Show below='lg'>
+            <Box paddingLeft={2}>
             <GenreMenu />
+            </Box>
+            
           </Show>
           <GameList  />
         </GridItem>
