@@ -1,9 +1,8 @@
-import { AspectRatio, Box, GridItem, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import {  GridItem, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
 import useGameBySlug from "../hooks/useGameBySlug";
 import { useParams } from "react-router-dom";
 import ExpandableText from "./ExpandableText";
-import CriticScore from "./criticScore";
-import DefinitionItem from "./DefinitionItem";
+
 import GameAttributes from "./GameAttributes";
 
 import GameTrailer from "./GameTrailer";

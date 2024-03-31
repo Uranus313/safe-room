@@ -1,5 +1,5 @@
 import { Grid, GridItem, HStack, Show } from '@chakra-ui/react'
-import NavBar from './components/navbar';
+
 import GameList from './components/gameList';
 import GenreList from './components/genreList';
 
@@ -7,7 +7,7 @@ import PlatformMenu from './components/platformMenu';
 import SortMenu from './components/sortMenu';
 import GenreMenu from './components/genreMenu';
 import GameListHeading from './components/gameListHeading';
-import useGameQueryStore from './storage/gameQueryStore';
+
 
 
 
