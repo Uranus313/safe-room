@@ -7,6 +7,7 @@ import PlatformMenu from './components/platformMenu';
 import SortMenu from './components/sortMenu';
 import GenreMenu from './components/genreMenu';
 import GameListHeading from './components/gameListHeading';
+import useGameQueryStore from './storage/gameQueryStore';
 
 
 
