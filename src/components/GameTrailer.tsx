@@ -2,12 +2,12 @@ import { AspectRatio, Spinner } from "@chakra-ui/react";
 import useGameTrailers from "../hooks/useGameTrailers";
 
 interface Props{
-    slug : string;
+    id : number;
 }
-function GameTrailer({slug} : Props){
-    const {data : trailers,isLoading,error} = useGameTrailers(slug); 
-    // console.log(slug)
-    // console.log(trailers)
+function GameTrailer({id} : Props){
+    const {data : trailers,isLoading,error} = useGameTrailers(id); 
+    console.log(id)
+    console.log(trailers)
     if (isLoading){
         return <Spinner /> 
     }

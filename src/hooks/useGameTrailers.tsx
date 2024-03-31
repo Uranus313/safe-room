@@ -5,13 +5,13 @@ import ms from "ms";
 import { Trailer } from "../entities/entities";
 
 
-function useGameTrailers(slug : string){
-    const ApiClient = new APIClient<Trailer>('/games/'+slug+"/movies");
+function useGameTrailers(id : number){
+    const ApiClient = new APIClient<Trailer>(`/games/${id}/movies`);
   // const fetchGenres = () => gameAPIClient
   // .get<FetchedData<Genre>>('/genres')
   // .then(res => res.data);
   return useQuery<FetchResponse<Trailer>,Error>({
-    queryKey: ['trailers',slug],
+    queryKey: ['trailers',id],
     queryFn :  ApiClient.getAll,
     staleTime : ms("24h"),
     // initialData: { count : genres.length,next: null, results : genres }
