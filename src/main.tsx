@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { QueryClientProvider,QueryClient } from '@tanstack/react-query'
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
-import App from './App.tsx'
+
 import theme from './components/theme.tsx'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { RouterProvider } from 'react-router-dom'
